@@ -1,0 +1,9 @@
+Page,Element_Name,Type,Locater_Type,Locater_Value
+Login_Page,Mobile Name,Text Field,xpath,//android.widget.EditText[@text="Mobile number"]
+Login_Page,GetOTP,Button,xpath,//android.view.ViewGroup[@content-desc="Get OTP"]/android.view.ViewGroup
+Lets get started,Lets get started,Text,xpath,//android.widget.TextView[@text="Let’s get started"]
+Lets get started,Please enter your name,Text Field,xpath,//android.widget.EditText[@resource-id="username-name-input"]
+Lets get started,Please enter your age,Text Field,xpath,//android.widget.EditText[@resource-id="username-age-input"]
+Lets get started,Male,Radio Button,xpath,//android.view.ViewGroup[@content-desc="Male"]
+Lets get started,Female,Radio Button,xpath,//android.view.ViewGroup[@content-desc="Female"]
+Lets get started,Continue,Button,xpath,//android.view.ViewGroup[@content-desc="Continue"]/android.view.ViewGroup
