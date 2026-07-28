@@ -17,11 +17,8 @@ public class WaitUtils {
 
     public WebElement waitForElement(By locator) {
 
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator)
-        );
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }

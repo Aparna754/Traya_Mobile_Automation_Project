@@ -3,11 +3,13 @@ package com.company.framework.driver;
 import com.company.framework.utils.ConfigReader;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import lombok.Getter;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
 
 public class DriverManager {
+
+    @Getter
     private static AndroidDriver driver;
 
     public static void initializeDriver() throws MalformedURLException {
@@ -25,10 +27,9 @@ public class DriverManager {
         driver = new AndroidDriver(URI.create("http://127.0.0.1:4723").toURL(), capabilities);
     }
 
-    public static AndroidDriver getDriver() {
-
-        return driver;
-    }
+//    public static void setDriver(AndroidDriver driver) {
+//        DriverManager.driver = driver;
+//    }
 
     public static void quitDriver() {
 

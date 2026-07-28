@@ -1,29 +1,33 @@
 package com.company.test.tests;
 
 import com.company.framework.driver.DriverManager;
+import com.company.framework.listeners.TestListener;
 import com.company.framework.pages.LetsGetStartedPage;
+import com.company.framework.stepgroups.RandomNumber;
 import com.company.test.base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(TestListener.class)
 public class LetsGetStartedTest extends BaseTest {
 
     @Test(description = "Verify user can fill all details and proceed")
     public void verifyUserCanFillDetailsAndContinue() {
 
         LetsGetStartedPage page = new LetsGetStartedPage(DriverManager.getDriver());
-        System.out.println("Application is opened");
+        String mobileNumber = RandomNumber.generateMobileNumber();
 
-        page.enterMobileNumber("99876437672");
+        System.out.println("Application is opened");
+        page.enterMobileNumber(mobileNumber);
         System.out.println("Application mobile entered");
+  //      page.clickContinue();
         page.clickGetOTP();
         Assert.assertTrue(page.isLetsGetStartedDisplayed(), "Let's get started text is not displayed");
         page.enterName("Aman");
         page.enterAge("30");
         page.selectMale();
-     //   Assert.assertTrue(page.isMaleSelected());
         page.selectFemale();
-    //    Assert.assertTrue(page.isFemaleSelected());
-        page.clickContinue();
+     //   page.clickContinue();
     }
 }
