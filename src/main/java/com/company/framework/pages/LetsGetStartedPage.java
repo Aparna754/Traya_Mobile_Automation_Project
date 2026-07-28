@@ -1,11 +1,9 @@
 package com.company.framework.pages;
 
-import com.company.framework.utils.LocatorReader;
 import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
-
 import java.util.Random;
 
 public class LetsGetStartedPage {
@@ -21,7 +19,8 @@ public class LetsGetStartedPage {
     private final By maleRadioButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Male']");
     private final By femaleRadioButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Female']");
     private final By continueButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup");
-    //reading excel data
+    
+//    reading excel data
 //    private By mobileNumberField = LocatorReader.getLocator("Login_Page", "Mobile Name");
 //    private By GetOTPButton = LocatorReader.getLocator("Login_Page", "GetOTP");
 //    private By letsGetStartedText = LocatorReader.getLocator("Lets get started", "Lets get started");

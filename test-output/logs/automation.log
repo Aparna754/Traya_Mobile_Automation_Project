@@ -1,80 +1,20 @@
-2026-07-28T10:37:16.804878 - Test execution started
-2026-07-28T10:37:20.103864 - Application opened successfully
-2026-07-28T10:37:20.104557 - TEST STARTED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:37:40.605544 - TEST FAILED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:37:40.605901 - Failure Reason: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
+2026-07-28T18:42:25.833976 - Test execution started
+2026-07-28T18:42:38.852644 - Application opened successfully
+2026-07-28T18:42:38.856610 - TEST STARTED: verifyUserCanFillDetailsAndContinue
+2026-07-28T18:42:59.734786 - TEST FAILED: verifyUserCanFillDetailsAndContinue
+2026-07-28T18:42:59.735465 - Failure Reason: Expected condition failed: waiting for visibility of element found by By.xpath: //android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup, but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
 (tried for 20 seconds with 500 milliseconds interval)
 Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
 System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 4417f667-0996-4ec9-95ab-f23c3a5a0383
-2026-07-28T10:37:42.366781 - Screenshot saved at: /Users/aparna/IdeaProjects/Traya_mobile_automation/test-output/screenshots/verifyUserCanFillDetailsAndContinue_20260728_103742.png
-2026-07-28T10:37:42.371931 - TEST FAILED: verifyUserCanFillDetailsAndContinue | Error: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
+Session ID: 029d4030-7b28-47e5-b51a-21b50ce1210d
+2026-07-28T18:43:00.403164 - Screenshot saved at: /Users/aparna/Documents/Traya_Mobile_Automation_Project/test-output/screenshots/verifyUserCanFillDetailsAndContinue_20260728_184300.png
+2026-07-28T18:43:00.408407 - TEST FAILED: verifyUserCanFillDetailsAndContinue | Error: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup, but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
 (tried for 20 seconds with 500 milliseconds interval)
 Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
 System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 4417f667-0996-4ec9-95ab-f23c3a5a0383
-2026-07-28T10:37:43.987531 - Extent report generated successfully
-2026-07-28T10:42:43.926180 - Test execution started
-2026-07-28T10:42:46.016192 - Application opened successfully
-2026-07-28T10:42:46.017397 - TEST STARTED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:43:06.499423 - TEST FAILED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:43:06.499815 - Failure Reason: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: cbf6c817-1538-405c-bb3b-ab09deff40fd
-2026-07-28T10:43:09.122845 - Screenshot saved at: /Users/aparna/IdeaProjects/Traya_mobile_automation/test-output/screenshots/verifyUserCanFillDetailsAndContinue_20260728_104309.png
-2026-07-28T10:43:09.130993 - TEST FAILED: verifyUserCanFillDetailsAndContinue | Error: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: cbf6c817-1538-405c-bb3b-ab09deff40fd
-2026-07-28T10:43:10.838833 - Extent report generated successfully
-2026-07-28T10:43:54.277398 - Test execution started
-2026-07-28T10:43:57.837638 - Application opened successfully
-2026-07-28T10:43:57.839273 - TEST STARTED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:44:25.707231 - TEST FAILED: verifyUserCanFillDetailsAndContinue
-2026-07-28T10:44:25.707646 - Failure Reason: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.TextView[@text='Let’s get started'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: a4c3e494-9cbb-4ad8-beac-7285ddb3807c
-2026-07-28T10:44:26.572232 - Screenshot saved at: /Users/aparna/IdeaProjects/Traya_mobile_automation/test-output/screenshots/verifyUserCanFillDetailsAndContinue_20260728_104426.png
-2026-07-28T10:44:26.581009 - TEST FAILED: verifyUserCanFillDetailsAndContinue | Error: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.TextView[@text='Let’s get started'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: a4c3e494-9cbb-4ad8-beac-7285ddb3807c
-2026-07-28T10:44:27.758557 - Extent report generated successfully
-2026-07-28T11:28:26.728155 - Test execution started
-2026-07-28T11:28:28.858956 - Application opened successfully
-2026-07-28T11:28:28.859646 - TEST STARTED: verifyUserCanFillDetailsAndContinue
-2026-07-28T11:28:49.114464 - TEST FAILED: verifyUserCanFillDetailsAndContinue
-2026-07-28T11:28:49.114662 - Failure Reason: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 02136d7c-8f29-4732-bd2a-708772e5f93f
-2026-07-28T11:28:51.822531 - Screenshot saved at: /Users/aparna/IdeaProjects/Traya_mobile_automation/test-output/screenshots/verifyUserCanFillDetailsAndContinue_20260728_112851.png
-2026-07-28T11:28:51.829135 - TEST FAILED: verifyUserCanFillDetailsAndContinue | Error: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //android.widget.EditText[@text='Mobile number'], but... org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters..
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.46.0', revision: 'df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.5', java.version: '21.0.11'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.trayacms.MainActivity, appium:appPackage: com.trayacms, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.trayacms.MainActivity, appPackage: com.trayacms, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: sdk_gphone16k_arm64, noReset: true, platformName: ANDROID, udid: emulator-5554}, appium:deviceApiLevel: 37, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone16k_arm64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 480, appium:deviceScreenSize: 1280x2856, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 3, appium:platformVersion: 17, appium:statBarHeight: 156, appium:takesScreenshot: true, appium:udid: emulator-5554, appium:viewportRect: {height: 2700, left: 0, top: 156, width: 1280}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 02136d7c-8f29-4732-bd2a-708772e5f93f
-2026-07-28T11:28:53.693566 - Extent report generated successfully
+Session ID: 029d4030-7b28-47e5-b51a-21b50ce1210d
+2026-07-28T18:43:01.493438 - Extent report generated successfully

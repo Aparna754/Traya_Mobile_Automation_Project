@@ -9,6 +9,9 @@
         <listener
                 class-name=
                         "com.company.framework.listeners.TestListener"/>
+        <listener
+                class-name=
+                        "com.company.framework.listeners.SuiteReportListener"/>
     </listeners>
 
     <test name="Mobile Tests">

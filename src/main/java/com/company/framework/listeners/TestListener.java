@@ -44,12 +44,10 @@ public class TestListener implements ITestListener {
         if (failure != null) {
             LogUtil.log("Failure Reason: " + failure.getMessage());
         }
-        if (DriverManager.getDriver() != null) {
-            ScreenshotUtil.takeScreenshot(DriverManager.getDriver(), result.getName());
-        }
 
         try {
             String screenshotPath = ScreenshotUtil.takeScreenshot(DriverManager.getDriver(), testName);
+            result.setAttribute("screenshotPath", screenshotPath);
             extentTest.get().fail("Test failed").addScreenCaptureFromPath(screenshotPath);
             LogUtil.log("Screenshot saved at: " + screenshotPath);
 

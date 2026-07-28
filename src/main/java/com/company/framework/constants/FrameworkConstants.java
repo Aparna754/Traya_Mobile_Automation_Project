@@ -16,4 +16,6 @@ public final class FrameworkConstants {
     public static final String LOG_PATH = TEST_OUTPUT_PATH + File.separator + "logs";
 
     public static final String REPORT_PATH = TEST_OUTPUT_PATH + File.separator + "reports" + File.separator + "ExtentReport.html";
+
+    public static final String PDF_REPORT_PATH = TEST_OUTPUT_PATH + File.separator + "reports" + File.separator + "SuiteExecutionReport.pdf";
 }
