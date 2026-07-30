@@ -25,4 +25,9 @@ public class RandomNumber {
 
         return number.toString();
     }
+
+    public static String generateRandomAge() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'generateRandomAge'");
+    }
 }

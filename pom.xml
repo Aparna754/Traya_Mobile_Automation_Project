@@ -13,6 +13,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
 
     <repositories>
@@ -58,11 +59,11 @@
             <version>2.22.0</version>
         </dependency>
 
-        <!-- Extent Reports -->
+        <!-- PDF Reporting (LGPL/MPL - permissive for proprietary use, unlike iText 5+/AGPL) -->
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>5.1.2</version>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>2.0.3</version>
         </dependency>
 
         <!-- Logging -->
@@ -100,12 +101,48 @@
                 <version>3.5.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
+
+    <!--
+        The "platform" system property is intentionally NOT set by default: testng.xml's own
+        <parameter name="platform"> is the source of truth per <test> block (needed so
+        testng-parallel.xml can run Android and iOS at once). This profile only activates -
+        injecting the system property into the forked test JVM - when a user explicitly passes
+        -Dplatform=... on the command line, giving a genuine CLI override without it silently
+        clobbering every suite's own per-test parameter.
+    -->
+    <profiles>
+        <profile>
+            <id>platform-override</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.5.2</version>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                            </suiteXmlFiles>
+                            <systemPropertyVariables>
+                                <platform>${platform}</platform>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

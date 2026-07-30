@@ -1,104 +1,84 @@
 package com.company.framework.pages;
 
-import com.company.framework.utils.LocatorReader;
 import com.company.framework.utils.WaitUtils;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
-
-import java.util.Random;
-
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 public class LetsGetStartedPage {
 
-    private final AndroidDriver driver;
     private final WaitUtils waitUtils;
 
-    private final By mobileNumberField = AppiumBy.xpath("//android.widget.EditText[@text='Mobile number']");
-    private final By getOTPButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Get OTP']/android.view.ViewGroup");
-    private final By letsGetStartedText = AppiumBy.xpath("//android.widget.TextView[@text='Let’s get started']");
-    private final By nameField = AppiumBy.xpath("//android.widget.EditText[@resource-id='username-name-input']");
-    private final By ageField = AppiumBy.xpath("//android.widget.EditText[@resource-id='username-age-input']");
-    private final By maleRadioButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Male']");
-    private final By femaleRadioButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Female']");
-    private final By continueButton = AppiumBy.xpath("//android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup");
-    //reading excel data
-//    private By mobileNumberField = LocatorReader.getLocator("Login_Page", "Mobile Name");
-//    private By GetOTPButton = LocatorReader.getLocator("Login_Page", "GetOTP");
-//    private By letsGetStartedText = LocatorReader.getLocator("Lets get started", "Lets get started");
-//    private By nameField = LocatorReader.getLocator("Lets get started", "Please enter your name");
-//    private By ageField = LocatorReader.getLocator("Lets get started","Please enter your age");
-//    private By maleRadioButton = LocatorReader.getLocator("Lets get started", "Male");
-//    private By femaleRadioButton = LocatorReader.getLocator("Lets get started", "Female");
-//    private By continueButton = LocatorReader.getLocator("Lets get started", "Continue");
+    @AndroidFindBy(xpath = "//android.widget.EditText[@text='Mobile number']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_mobile_number_field") // TODO(iOS): replace once real app exists
+    private WebElement mobileNumberField;
 
-    public LetsGetStartedPage(AndroidDriver driver) {
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Get OTP']/android.view.ViewGroup")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_get_otp_button") // TODO(iOS): replace once real app exists
+    private WebElement getOTPButton;
 
-        this.driver = driver;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Let’s get started']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_lets_get_started_text") // TODO(iOS): replace once real app exists
+    private WebElement letsGetStartedText;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='username-name-input']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
+    private WebElement nameField;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='username-age-input']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_age_field") // TODO(iOS): replace once real app exists
+    private WebElement ageField;
+
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Male']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_male_radio_button") // TODO(iOS): replace once real app exists
+    private WebElement maleRadioButton;
+
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Female']")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+    private WebElement femaleRadioButton;
+
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup")
+    @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+    private WebElement continueButton;
+
+    public LetsGetStartedPage(AppiumDriver driver) {
+
         this.waitUtils = new WaitUtils(driver);
-
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
+
     public void enterMobileNumber(String mobileNumber) {
-        waitUtils.waitForElement(mobileNumberField);
-        driver.findElement(mobileNumberField).sendKeys(mobileNumber);
+        waitUtils.waitForElement(mobileNumberField).sendKeys(mobileNumber);
     }
 
     public void clickGetOTP() {
-        waitUtils.waitForElement(getOTPButton);
-        driver.findElement(getOTPButton).click();
+        waitUtils.waitForElement(getOTPButton).click();
     }
 
     public boolean isLetsGetStartedDisplayed() {
-        waitUtils.waitForElement(letsGetStartedText);
-        return driver.findElement(letsGetStartedText).isDisplayed();
+        return waitUtils.waitForElement(letsGetStartedText).isDisplayed();
     }
 
     public void enterName(String name) {
-        waitUtils.waitForElement(nameField);
-        driver.findElement(nameField).sendKeys(name);
+        waitUtils.waitForElement(nameField).sendKeys(name);
     }
 
     public void enterAge(String age) {
-        waitUtils.waitForElement(ageField);
-        driver.findElement(ageField).sendKeys(age);
+        waitUtils.waitForElement(ageField).sendKeys(age);
     }
 
     public void selectMale() {
-        waitUtils.waitForElement(maleRadioButton);
-        driver.findElement(maleRadioButton).click();
+        waitUtils.waitForElement(maleRadioButton).click();
     }
-
 
     public void selectFemale() {
-        waitUtils.waitForElement(femaleRadioButton);
-        driver.findElement(femaleRadioButton).click();
+        waitUtils.waitForElement(femaleRadioButton).click();
     }
-
 
     public void clickContinue() {
-        waitUtils.waitForElement(continueButton);
-        driver.findElement(continueButton).click();
-    }
-
-    public static String generateMobileNumber() {
-        Random rand = new Random();
-        int[] digitCount = new int[10];
-        StringBuilder number = new StringBuilder();
-
-        int firstDigit = 2 + rand.nextInt(4); // 2,3,4,5
-        number.append(firstDigit);
-        digitCount[firstDigit]++;
-
-        for (int pos = 1; pos < 10; pos++) {
-            int digit;
-            do {
-                digit = rand.nextInt(10); // 0-9
-            } while (digitCount[digit] >= 3);
-
-            number.append(digit);
-            digitCount[digit]++;
-        }
-
-        return number.toString();
+        waitUtils.waitForElement(continueButton).click();
     }
 
 }

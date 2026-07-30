@@ -1,7 +1,7 @@
 package com.company.framework.utils;
 
 import com.company.framework.constants.FrameworkConstants;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
@@ -16,14 +16,19 @@ public final class ScreenshotUtil {
     private ScreenshotUtil() {
     }
 
-    public static String takeScreenshot(AndroidDriver driver, String testName) {
+    /**
+     * Captures a screenshot for a FAILED test only - callers must not invoke this for
+     * passed/skipped tests (see TestListener, the sole caller). Naming convention:
+     * <TestMethodName>_FAILED_yyyyMMdd_HHmmss.png
+     */
+    public static String captureFailureScreenshot(AppiumDriver driver, String testName) {
 
         try {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String fileName = testName + "_" + timestamp + ".png";
-            Path directory = Path.of(FrameworkConstants.SCREENSHOT_PATH);
+            String fileName = testName + "_FAILED_" + timestamp + ".png";
+            Path directory = Path.of(FrameworkConstants.screenshotPathFor(PlatformUtils.getCurrentPlatform().name()));
             Files.createDirectories(directory);
             Path destination = directory.resolve(fileName);
             Files.copy(screenshot.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
