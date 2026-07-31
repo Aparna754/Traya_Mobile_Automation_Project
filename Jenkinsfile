@@ -53,17 +53,43 @@ pipeline {
             }
         }
 
+        // stage('Verify Toolchain') {
+        //     steps {
+        //         sh '''
+        //             set -e
+        //             java -version
+        //             mvn -version
+        //             adb version
+        //             appium --version
+        //         '''
+        //     }
+        // }
         stage('Verify Toolchain') {
-            steps {
-                sh '''
-                    set -e
-                    java -version
-                    mvn -version
-                    adb version
-                    appium --version
-                '''
-            }
-        }
+    steps {
+        sh '''
+            set -e
+
+            echo "===== PATH ====="
+            echo $PATH
+
+            echo "===== WHICH ====="
+            which java || true
+            which mvn || true
+            which adb || true
+            which node || true
+            which npm || true
+            which appium || true
+
+            echo "===== VERSIONS ====="
+            java -version
+            mvn -version
+            adb version
+            node -v
+            npm -v
+            appium --version
+        '''
+    }
+}
 
         stage('Boot Android Emulator') {
             when {
@@ -72,30 +98,47 @@ pipeline {
             options {
                 timeout(time: 8, unit: 'MINUTES')
             }
+            // steps {
+            //     sh '''
+            //         set -e
+            //         if adb devices | grep -q "^emulator-"; then
+            //             echo "Emulator already running, reusing it"
+            //         else
+            //             nohup emulator -avd "${AVD_NAME}" -no-snapshot -no-window -no-audio -gpu swiftshader_indirect > emulator.log 2>&1 &
+            //             adb wait-for-device
+
+            //             BOOTED=""
+            //             for i in $(seq 1 60); do
+            //                 BOOTED=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\\r')
+            //                 if [ "$BOOTED" = "1" ]; then break; fi
+            //                 sleep 5
+            //             done
+
+            //             if [ "$BOOTED" != "1" ]; then
+            //                 echo "Emulator failed to reach boot_completed within timeout"
+            //                 cat emulator.log || true
+            //                 exit 1
+            //             fi
+            //         fi
+            //         adb devices
+            //     '''
+            // }
             steps {
                 sh '''
                     set -e
+
+                        echo "Checking for a running emulator..."
+
                     if adb devices | grep -q "^emulator-"; then
-                        echo "Emulator already running, reusing it"
+                        echo "Emulator is already running."
                     else
-                        nohup emulator -avd "${AVD_NAME}" -no-snapshot -no-window -no-audio -gpu swiftshader_indirect > emulator.log 2>&1 &
-                        adb wait-for-device
-
-                        BOOTED=""
-                        for i in $(seq 1 60); do
-                            BOOTED=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\\r')
-                            if [ "$BOOTED" = "1" ]; then break; fi
-                            sleep 5
-                        done
-
-                        if [ "$BOOTED" != "1" ]; then
-                            echo "Emulator failed to reach boot_completed within timeout"
-                            cat emulator.log || true
-                            exit 1
-                        fi
+                        echo "No Android emulator is running."
+                        echo "Please start the emulator manually from Android Studio and rebuild."
+                        exit 1
                     fi
+
                     adb devices
-                '''
+             '''
             }
         }
 
@@ -140,7 +183,7 @@ pipeline {
                 if [ -f appium.pid ]; then
                     kill "$(cat appium.pid)" 2>/dev/null || true
                 fi
-                adb emu kill 2>/dev/null || true
+        #        adb emu kill 2>/dev/null || true
             '''
             archiveArtifacts artifacts: 'test-output/reports/*.pdf, test-output/screenshots/**/*.png, test-output/logs/*.log, appium.log, emulator.log',
                               allowEmptyArchive: true,
