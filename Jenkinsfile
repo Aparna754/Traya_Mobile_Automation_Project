@@ -8,7 +8,7 @@
 pipeline {
 
     // Change this label to whatever you assign your macOS Android agent in Jenkins.
-    agent { label 'macos-android' }
+    agent { label 'built-in'}
 
     parameters {
         choice(
