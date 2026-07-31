@@ -40,9 +40,9 @@ pipeline {
         timestamps()
     }
 
-    environment {
-        ANDROID_HOME = "${env.HOME}/Library/Android/sdk"
-        PATH = "${env.ANDROID_HOME}/platform-tools:${env.ANDROID_HOME}/emulator:${env.PATH}"
+   environment {
+    ANDROID_HOME = "${env.HOME}/Library/Android/sdk"
+    PATH = "/opt/homebrew/bin:${env.ANDROID_HOME}/platform-tools:${env.ANDROID_HOME}/emulator:${env.PATH}"
     }
 
     stages {
