@@ -26,8 +26,15 @@ public final class DriverManager {
 
         AppiumDriver driver = driverThreadLocal.get();
         if (driver != null) {
-            driver.quit();
-            driverThreadLocal.remove();
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                // Session may already be gone (e.g. the app closed/restarted itself after a
+                // completed action) - nothing left to quit, and this must not fail teardown for
+                // a test whose actual assertions already passed.
+            } finally {
+                driverThreadLocal.remove();
+            }
         }
     }
 }

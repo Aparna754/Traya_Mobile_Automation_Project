@@ -8,7 +8,7 @@ the Jenkins server/agent side that has to happen outside this repo before it wil
 The pipeline is written for a **macOS agent** (matches the Android emulator setup already used
 locally in this project). The agent needs:
 
-- Java 21, Maven (`mvn -version` must work in the Jenkins agent's shell, not just your interactive shell - see the PATH note below)
+- Java 25, Maven (`mvn -version` must work in the Jenkins agent's shell, not just your interactive shell - see the PATH note below)
 - Android SDK with an emulator AVD already created (`Pixel_10_Pro` by default - override via the
   `AVD_NAME` build parameter, or create an AVD with that exact name on the agent)
 - Node.js + the Appium CLI: `npm install -g appium`, then `appium driver install uiautomator2`

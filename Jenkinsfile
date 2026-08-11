@@ -1,6 +1,6 @@
 // Declarative pipeline for the Traya Mobile Automation framework.
 //
-// Requires a macOS Jenkins agent with: Java 21, Maven, Android SDK + an emulator AVD already
+// Requires a macOS Jenkins agent with: Java 25, Maven, Android SDK + an emulator AVD already
 // created, Node.js + the Appium CLI (npm install -g appium) with the uiautomator2/xcuitest
 // drivers installed, and Xcode (only needed for the iOS suites). See docs/jenkins-ci-setup.md
 // for the one-time agent/job/webhook setup this file assumes.
@@ -41,8 +41,9 @@ pipeline {
     }
 
    environment {
-    ANDROID_HOME = "${env.HOME}/Library/Android/sdk"
-    PATH = "/opt/homebrew/bin:${env.ANDROID_HOME}/platform-tools:${env.ANDROID_HOME}/emulator:${env.PATH}"
+        ANDROID_HOME = "${env.HOME}/Library/Android/sdk"
+        PATH = "/usr/local/bin:/opt/homebrew/bin:/Users/aparna/Library/Android/sdk/platform-tools:/Users/aparna/Library/Android/sdk/emulator:/usr/bin:/bin:/usr/sbin:/sbin"
+
     }
 
     stages {

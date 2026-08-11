@@ -15,7 +15,12 @@
             </run>
         </groups>
         <classes>
-            <class name="com.company.test.tests.LetsGetStartedTest"/>
+            <class name="com.company.test.tests.male.HairTest_Stage1_Male_Test"/>
+            <class name="com.company.test.tests.male.HairTest_Stage2_Male_Test"/>
+            <class name="com.company.test.tests.male.HairTest_Stage3_Male_Test"/>
+            <class name="com.company.test.tests.male.HairTest_Stage4_Male_Test"/>
+            <class name="com.company.test.tests.male.HairTest_Stage5_Male_Test"/>
+            <class name="com.company.test.tests.male.HairTest_Stage6_Male_Test"/>
         </classes>
     </test>
 

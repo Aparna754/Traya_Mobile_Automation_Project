@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 @Listeners(TestListener.class)
 public class LetsGetStartedTest extends BaseTest {
 
-    @Test(description = "Verify user can fill all details and proceed", groups = {"regression"})
+    @Test(description = "Verify user can fill all details and proceed", groups = {"Test"})
     @TestDescription("Verify that user enters the mobile number, clicks Continue, clicks Get OTP, "
             + "confirms the 'Let's get started' screen is displayed, fills in name/age/gender, "
             + "and completes the mandatory-details flow.")

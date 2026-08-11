@@ -75,6 +75,6 @@ public final class DriverFactory {
 
     private static URL appiumServerUrl() throws MalformedURLException {
         String url = ConfigReader.get("appiumServerUrl");
-        return URI.create(url != null && !url.isBlank() ? url : "http://127.0.0.1:4723").toURL();
+        return URI.create(url != null && !url.isBlank() ? url : "http://127.0.0.1:4724").toURL();
     }
 }
