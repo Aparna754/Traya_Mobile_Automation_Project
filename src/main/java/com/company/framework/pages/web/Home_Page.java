@@ -4,9 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.company.framework.utils.WebWaitUtils;
-
+import java.time.Duration;
 public class Home_Page {
 
     private final WebWaitUtils waitUtils;
@@ -21,6 +20,9 @@ public class Home_Page {
     public boolean isOkButtonDisplayed() {
         return waitUtils.isElementDisplayed(OKButtonInWelcomePopup);
     }
+    public boolean isOkButtonDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(OKButtonInWelcomePopup, timeout);
+    }
     public void clickOKButton() {
         waitUtils.waitUntilClickable(OKButtonInWelcomePopup).click();
     }
@@ -33,7 +35,6 @@ public class Home_Page {
     public void clickSearchTextfield() {
         waitUtils.waitUntilClickable(SearchPageTextfield).click();
     }
-
 
     @FindBy(xpath = "//input[@class='spotlight-input']")
     private WebElement SearchTextfield;
@@ -51,6 +52,9 @@ public class Home_Page {
     private WebElement peopleNumber;
     public boolean isPeopleNumberDisplayed() {
         return waitUtils.isElementDisplayed(peopleNumber);
+    }
+    public boolean isPeopleNumberDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(peopleNumber, timeout);
     }
     public void clickPeopleNumber() {
         waitUtils.waitUntilClickable(peopleNumber).click();

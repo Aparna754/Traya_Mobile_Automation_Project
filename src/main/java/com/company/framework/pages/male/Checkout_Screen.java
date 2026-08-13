@@ -7,8 +7,9 @@ import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
+import java.time.Duration;
 public class Checkout_Screen {
+    
     private final WaitUtils waitUtils;
     private final AppiumDriver driver;
 
@@ -139,6 +140,9 @@ public class Checkout_Screen {
     }
     public boolean isAlreadyPresentAddressDisplayed() {
         return waitUtils.isElementDisplayed(AlreadyPresentAddress);
+    }
+    public boolean isAlreadyPresentAddressDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(AlreadyPresentAddress, timeout);
     }
     public void clickAlreadyPresentAddress() {
         waitUtils.waitForElement(AlreadyPresentAddress).click();

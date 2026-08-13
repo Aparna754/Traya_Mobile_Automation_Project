@@ -33,8 +33,20 @@ public class WebWaitUtils {
     }
 
     public boolean isElementDisplayed(WebElement element) {
+        return isElementDisplayed(element, Duration.ofSeconds(45));
+    }
+
+    /**
+     * Short-timeout variant of isElementDisplayed, for "which of these mutually exclusive
+     * screens/elements am I on" probes (e.g. a chain of if/else-if branches). The default 45s
+     * timeout exists because real modals here do server round-trips; reusing it for a probe
+     * that's expected to be false most of the time means eating a full 45s of dead time per
+     * false branch. Only use a shorter timeout here for checks that gate branching logic, not
+     * for checks that assert an element must be present.
+     */
+    public boolean isElementDisplayed(WebElement element, Duration timeout) {
         try {
-            return waitForVisible(element).isDisplayed();
+            return waitForVisible(element, timeout).isDisplayed();
         } catch (Exception e) {
             return false;
         }
@@ -69,11 +81,15 @@ public class WebWaitUtils {
     }
 
     private WebElement waitForVisible(WebElement element) {
+        return waitForVisible(element, Duration.ofSeconds(45));
+    }
+
+    private WebElement waitForVisible(WebElement element, Duration timeout) {
         // 45s rather than WaitUtils' 20s: this class backs live web-app pages (erp.traya.health)
         // whose modals populate via real server round-trips (e.g. the "Cancel Order" modal's
         // Order ID/Category/Subcategory/remark dropdown), observed taking noticeably longer to
         // finish rendering than any transition in this project's mobile screens.
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.ignoring(StaleElementReferenceException.class);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }

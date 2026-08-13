@@ -19,13 +19,17 @@ public class WaitUtils {
     }
 
     public WebElement waitForElement(WebElement element) {
+        return waitForElement(element, Duration.ofSeconds(20));
+    }
+
+    public WebElement waitForElement(WebElement element, Duration timeout) {
 
         // Many yes/no questions in a row reuse the same generic locator (e.g. "Yes"/"No" text) -
         // when the screen transitions to the next question, the previously-resolved element can
         // go stale mid-wait. WebDriverWait only auto-retries NoSuchElementException by default,
         // not StaleElementReferenceException, so without this the wait can abort well before the
         // real timeout even though the (new) element is visible moments later.
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.ignoring(StaleElementReferenceException.class);
 
         return wait.until(ExpectedConditions.visibilityOf(element));
@@ -37,8 +41,20 @@ public class WaitUtils {
      * do X" branches), where a missing element is an expected, valid outcome, not a failure.
      */
     public boolean isElementDisplayed(WebElement element) {
+        return isElementDisplayed(element, Duration.ofSeconds(20));
+    }
+
+    /**
+     * Short-timeout variant of isElementDisplayed, for "which of these mutually exclusive
+     * screens/elements am I on" probes (e.g. a chain of if/else-if branches). The default 20s
+     * timeout is sized for genuinely waiting on a slow-to-render element; reusing it for a probe
+     * that's expected to be false most of the time means eating a full 20s of dead time per
+     * false branch. Only use a shorter timeout here for checks that gate branching logic, not for
+     * checks that assert an element must be present.
+     */
+    public boolean isElementDisplayed(WebElement element, Duration timeout) {
         try {
-            return waitForElement(element).isDisplayed();
+            return waitForElement(element, timeout).isDisplayed();
         } catch (Exception e) {
             return false;
         }

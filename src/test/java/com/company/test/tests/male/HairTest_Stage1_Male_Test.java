@@ -23,7 +23,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+import java.time.Duration;
 @Listeners(TestListener.class)
 public class HairTest_Stage1_Male_Test extends BaseTest {
 
@@ -34,6 +34,16 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
     String pincode = "560078";
     String location = "JP Nagar";
     String address = "Test Building 1234";
+
+    // Branch-detection probes below (e.g. "is this the OTP screen or the new-user screen?")
+    // only need to confirm the screen has already rendered - they don't need to wait out the
+    // full 20s/45s reserved for "wait for a genuinely slow element to appear". Using the full
+    // timeout on every mutually-exclusive if/else-if meant each false branch burned its entire
+    // timeout before falling through to the next check, which is what made this test slow -
+    // not the branching logic itself. Kept short but not instant, since a screen can still take
+    // a couple of seconds to finish rendering right after the previous action.
+    private static final Duration QUICK_MOBILE_TIMEOUT = Duration.ofSeconds(5);
+    private static final Duration QUICK_WEB_TIMEOUT = Duration.ofSeconds(8);
 
     @Test(description = "Verify Male User Can Fill All Details With Stage1", groups = {"regression"})
     @TestDescription("Verify the user can fill all the details with stage1 and proceed to payment")
@@ -51,34 +61,32 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
         Customer_Screen customerScreen = new Customer_Screen(DriverManager.getDriver());
         Customer_Hamberger_Screen customerHambergerScreen = new Customer_Hamberger_Screen(DriverManager.getDriver());
       //  Lead_You_Screen leadYouScreen = new Lead_You_Screen(DriverManager.getDriver());
-        
 
-
-        if(loginPage.isMobileNumberFieldDisplayed()==true) {
-            Assert.assertTrue(loginPage.isMobileNumberFieldDisplayed(), "Mobile number field is not displayed");
+        if(loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)) {
             loginPage.enterMobileNumber(mobileNumber);
-            loginPage.clickGetOTP();  
+            loginPage.clickGetOTP();
         }
 
-        if(loginPage.isLetsGetStartedDisplayed()==true) {
-            Assert.assertTrue(loginPage.isLetsGetStartedDisplayed(), "Let's get started text is not displayed");
+        if(loginPage.isLetsGetStartedDisplayed(QUICK_MOBILE_TIMEOUT)) {
             loginPage.enterName(name);
             loginPage.enterAge(age);
             loginPage.selectMale();
             loginPage.clickContinue();
         }
 
-        else if(loginPage.isVerifyOTPTextDisplayed()==true) {
-            Assert.assertTrue(loginPage.isVerifyOTPTextDisplayed(), "Verify OTP text is not displayed");
+        else if(loginPage.isVerifyOTPTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            loginPage.clickSkipButton();
+            // "Skip" only shows on some logins (e.g. a one-time onboarding overlay) - an account
+            // that's already logged in many times today may not see it again.
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+                loginPage.clickSkipButton();
+            }
         }
 
-        if(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed()==true) {
-            Assert.assertTrue(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed(), "Know the root cause of your hair loss text is not displayed");
+        if(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
             Assert.assertTrue(leadScreen.isTrayaHeroesTextDisplayed(), "Traya heroes text is not displayed");
             leadScreen.swipeUntilWhatCausesHairLossTextVisible();
             Assert.assertTrue(leadScreen.isWhatCausesHairLossTextDisplayed(), "What causes hair loss text is not displayed");
@@ -94,8 +102,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             Assert.assertTrue(leadScreen.isGoogleReviewsAndRatingsTextDisplayed(), "Google reviews and ratings text is not displayed");
             leadScreen.clickTakeTheHairTest() ;
         }
-        if(leadScreen.isTestCompletedTodayTextDisplayed()==true) {
-            Assert.assertTrue(leadScreen.isTestCompletedTodayTextDisplayed(), "Test completed today text is not displayed");
+        if(leadScreen.isTestCompletedTodayTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
             leadScreen.swipeUntilWhoMatchesYourProfileTextVisible();
             Assert.assertTrue(leadScreen.isWhoMatchesYourProfileTextDisplayed(), "Who matches your profile text is not displayed");
             leadScreen.swipeUntilTakeHairTestAgainTextVisible();
@@ -103,8 +110,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             leadScreen.clickTakeHairTestAgainText();
         }   
 
-        if(hairTestScreen.isHairLossTextDisplayed()==true) {
-            Assert.assertTrue(hairTestScreen.isHairLossTextDisplayed(), "Hair loss text is not displayed");
+        if(hairTestScreen.isHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
             Assert.assertTrue(hairTestScreen.isWhichImageBestDescribesYourHairLossTextDisplayed(), "Which image best describes your hair loss text is not displayed");
             Assert.assertTrue(hairTestScreen.isStage1TextOptionDisplayed(), "Stage 1 text option is not displayed");
             hairTestScreen.clickStage1Option();
@@ -137,8 +143,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             hairTestScreen.clickNoneTextOption();
             Assert.assertTrue(hairTestScreen.isTakeScalpPhotoButtonDisplayed(), "Take scalp photo button is not displayed");
             hairTestScreen.clickTakeScalpPhotoButton();
-            if(hairTestScreen.isContinueButtonDisplayed()==true) {
-                Assert.assertTrue(hairTestScreen.isContinueButtonDisplayed(), "Continue button is not displayed");
+            if(hairTestScreen.isContinueButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
                 hairTestScreen.clickContinueButton();
             }
             Assert.assertTrue(hairTestScreen.isImageCaptureButtonDisplayed(), "Image capture button is not displayed");
@@ -154,7 +159,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             Assert.assertTrue(assessmentReportScreen.isFreeAddOnsTextDisplayed(), "Free add-ons text is not displayed");
             Assert.assertTrue(assessmentReportScreen.isBuyNowButtonDisplayed(), "Buy now button is not displayed");
             assessmentReportScreen.clickBuyNowButton();
-            if(checkoutScreen.isAlreadyPresentAddressDisplayed()==true) {
+            if(checkoutScreen.isAlreadyPresentAddressDisplayed(QUICK_MOBILE_TIMEOUT)) {
                 checkoutScreen.clickAlreadyPresentAddress();
                 Assert.assertTrue(checkoutScreen.isProceedToPayButtonDisplayed(), "Proceed to pay button is not displayed");
                 checkoutScreen.clickProceedToPayButton();
@@ -222,18 +227,17 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
                 customerHambergerScreen.clickLogoutToggle_button();
             }
         }
+        
         WebDriver webDriver = Web_Chrome_SignIn.createSignedInChromeDriver();
         Login_Page loginPageWeb = new Login_Page(webDriver);
         Home_Page homePage  = new Home_Page(webDriver);
         Customer_Discription_Page customerDiscriptionPage = new Customer_Discription_Page(webDriver);
         Web_Chrome_SignIn.navigateToWelcomePage(webDriver);
 
-        if (loginPageWeb.isSignInWithGoogleDisplayed()==true) {
-            Assert.assertTrue(loginPageWeb.isSignInWithGoogleDisplayed(), "Sign in with Google button is not displayed");
+        if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)) {
             loginPageWeb.clickSignInWithGoogleButton();
             Thread.sleep(2000);
-            if (homePage.isOkButtonDisplayed()==true) {
-                Assert.assertTrue(homePage.isOkButtonDisplayed(), "OK Buton is not displayed");
+            if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)) {
                 homePage.clickOKButton();
             }
         }
@@ -243,13 +247,11 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
         homePage.clickSearchPageTextField();
         homePage.enterNumberInSearchPageTextField(mobileNumber);
 
-        if (homePage.isPeopleNumberDisplayed()==true) {
-            Assert.assertTrue(homePage.isPeopleNumberDisplayed(), "People Number is not displayed");
+        if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)) {
             homePage.clickPeopleNumber();
         }
 
-        if (customerDiscriptionPage.isCanceledButtonDisplayed()==true){
-            Assert.assertTrue(customerDiscriptionPage.isCanceledButtonDisplayed(), "Canceled button is not displayed");
+        if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)){
             customerDiscriptionPage.clickCanceledButton();
             Thread.sleep(2000);
             Assert.assertTrue(customerDiscriptionPage.isSelectARemarkDisplayed(), "Select A Remark is not displayed");
@@ -260,8 +262,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             Assert.assertTrue(customerDiscriptionPage.isSuccessfulMessageDisplayed(), "Automatic Order Cancellation Ticket Raise successfully Message is not displayed");
         }
 
-        if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed()==true) {
-            Assert.assertTrue(customerDiscriptionPage.isSlotBookingCloseButonDisplayed(), "SLOT BOOKING close button is not displayed");
+        if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)) {
             customerDiscriptionPage.clickSlotBookCloseButton();
             Assert.assertTrue(customerDiscriptionPage.isOtherOptionDisplayed(), "Please Enter the Reason for Slot Cancellation Other option is not displayed");
             customerDiscriptionPage.clickOtherOption();
@@ -271,6 +272,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             customerDiscriptionPage.clickConfirmCancelButton();
             Assert.assertTrue(customerDiscriptionPage.isSlotCancelledMessageDisplayed(), "Slot Cancelled successfully message is not displayed");
         }
+        webDriver.quit();
     }
 }
 

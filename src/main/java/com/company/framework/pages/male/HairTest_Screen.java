@@ -2,13 +2,12 @@ package com.company.framework.pages.male;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.company.framework.utils.SwipeUtils;
 import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
+import java.time.Duration;
 public class HairTest_Screen {
 
     private final WaitUtils waitUtils;
@@ -25,6 +24,9 @@ public class HairTest_Screen {
     private WebElement HairLossText;
     public boolean isHairLossTextDisplayed() {
         return waitUtils.isElementDisplayed(HairLossText);
+    }
+    public boolean isHairLossTextDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(HairLossText, timeout);
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Which image best describes your hair loss?']")
@@ -144,6 +146,7 @@ public class HairTest_Screen {
     public void clickMotherOrAnyoneFromMothersSideOfTheFamilyTextOption() {
         waitUtils.waitForElement(MotherOrAnyoneFromMothersSideOfTheFamilyTextOption).click();
     }
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Father or anyone from father's side of the family']")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement FatherOrAnyoneFromFathersSideOfTheFamilyTextOption;
@@ -414,7 +417,6 @@ public class HairTest_Screen {
         waitUtils.waitForElement(NotSureTextOption).click();
     }
 
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Low blood pressure']")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement LowBloodPressureTextOption;
@@ -480,6 +482,9 @@ public class HairTest_Screen {
     private WebElement ContinueTextOption;
     public boolean isContinueButtonDisplayed() {
         return waitUtils.isElementDisplayed(ContinueTextOption);
+    }
+    public boolean isContinueButtonDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(ContinueTextOption, timeout);
     }
     public void clickContinueButton() {
         waitUtils.waitForElement(ContinueTextOption).click();

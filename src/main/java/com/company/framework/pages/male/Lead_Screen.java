@@ -7,7 +7,7 @@ import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
+import java.time.Duration;
 public class Lead_Screen {
 
     private final WaitUtils waitUtils;
@@ -19,12 +19,14 @@ public class Lead_Screen {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Test completed')]")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement TestCompletedTodayText;
     public boolean isTestCompletedTodayTextDisplayed() {
         return waitUtils.isElementDisplayed(TestCompletedTodayText);
+    }
+    public boolean isTestCompletedTodayTextDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(TestCompletedTodayText, timeout);
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'who matches your profile')]")
@@ -72,6 +74,9 @@ public class Lead_Screen {
     private WebElement knowTheRootCauseOfYourHairLossText;
     public boolean isKnowTheRootCauseOfYourHairLossTextDisplayed() {
         return waitUtils.isElementDisplayed(knowTheRootCauseOfYourHairLossText);
+    }
+    public boolean isKnowTheRootCauseOfYourHairLossTextDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(knowTheRootCauseOfYourHairLossText, timeout);
     }
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'The Hair Test')]")

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import java.time.Duration;
 public class Login_Page {
 
     private final WebWaitUtils waitUtils;
@@ -20,6 +20,9 @@ public class Login_Page {
 
     public boolean isSignInWithGoogleDisplayed() {
         return waitUtils.isElementDisplayed(SIGN_IN_WITH_GOOGLE_BUTTON);
+    }
+    public boolean isSignInWithGoogleDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(SIGN_IN_WITH_GOOGLE_BUTTON, timeout);
     }
 
     public void clickSignInWithGoogleButton() throws InterruptedException {
