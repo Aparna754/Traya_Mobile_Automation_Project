@@ -5,6 +5,7 @@ import com.company.framework.driver.DriverManager;
 import com.company.framework.listeners.TestListener;
 import com.company.framework.pages.male.Customer_Screen;
 import com.company.framework.pages.male.LoginAndDraftpage;
+import com.company.framework.pages.male.OrderSummary_Screen;
 import com.company.framework.pages.male.Razorpay;
 import com.company.framework.pages.male.ThankYou_Screen;
 import com.company.framework.pages.web.Customer_Discription_Page;
@@ -17,7 +18,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class Customer_Razorpay_Male_Test extends BaseTest {
 
@@ -26,23 +26,16 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
 
     private static final Duration QUICK_MOBILE_TIMEOUT = Duration.ofSeconds(5);
     private static final Duration QUICK_WEB_TIMEOUT = Duration.ofSeconds(8);
-    // The checklist dashboard's first render after login fetches order history/streak/coach data
-    // - confirmed via screenshot that it can still be mid-load well past 20s (and intermittently
-    // past 40s too), apparently scaling with how many orders this account has accumulated from
-    // repeated test runs. This is real, variable backend response time, not a locator bug
-    // (confirmed via page-source dumps: exactly one matching, displayed=true node, no duplicates)
-    // - so this one specific "wait for the expected screen to finish loading" check gets a long
-    // allowance. If this account's order history keeps growing, this may need to grow further,
-    // or the account's test data should be pruned.
     private static final Duration DASHBOARD_LOAD_TIMEOUT = Duration.ofSeconds(60);
 
-    @Test(description = "Verify returning-customer checklist home, reorder via Buy Again, Razorpay COD checkout, and ERP cleanup", groups = {"regression"})
-    @TestDescription("Login as a returning customer, verify the checklist home dashboard, place a reorder through Razorpay with Cash on Delivery, book a call, then cancel the order and slot booking via ERP")
+    @Test(description = "Verify Male customer checklist home, reorder via Buy Again, Razorpay COD checkout and then Cancel the order from CRM", groups = {"regression"})
+    @TestDescription("Login as a Male customer, verify the checklist home dashboard, place a reorder through Razorpay with Cash on Delivery, book a call, then cancel the order and slot booking via CRM Application")
 
     public void verifyReturningCustomerBuyAgainRazorpayCheckout() throws InterruptedException {
 
         LoginAndDraftpage loginPage = new LoginAndDraftpage(DriverManager.getDriver());
         Customer_Screen customerScreen = new Customer_Screen(DriverManager.getDriver());
+        OrderSummary_Screen orderSummaryScreen = new OrderSummary_Screen(DriverManager.getDriver());
         Razorpay razorpay = new Razorpay(DriverManager.getDriver());
         ThankYou_Screen thankYouScreen = new ThankYou_Screen(DriverManager.getDriver());
 
@@ -57,7 +50,7 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
                 loginPage.clickSkipButton();
             }
         }
-        
+
         if (customerScreen.isTodaysChecklistTextDisplayed(DASHBOARD_LOAD_TIMEOUT)) {
 
             Assert.assertTrue(customerScreen.isTodaysChecklistTextDisplayed(), "Today's Checklist text is not displayed");
@@ -70,14 +63,16 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
             Assert.assertTrue(customerScreen.isBuyAgainButtonDisplayed(), "Buy Again button is not displayed");
             customerScreen.clickBuyAgainButton();
             Thread.sleep(3000);
-            Assert.assertTrue(customerScreen.isOrderSummaryTextDisplayed(), "Order Summary text is not displayed");
-            Assert.assertTrue(customerScreen.isPlaceAnotherOrderButtonDisplayed(), "Place another order button is not displayed");
-            Assert.assertTrue(customerScreen.isViewAllProductsButtonDisplayed(), "View all products button is not displayed");
-            customerScreen.clickPlaceAnotherOrderButton();
+            Assert.assertTrue(orderSummaryScreen.isOrderSummaryTextDisplayed(), "Order Summary text is not displayed");
+            Assert.assertTrue(orderSummaryScreen.isPlaceAnotherOrderButtonDisplayed(), "Place another order button is not displayed");
+            Assert.assertTrue(orderSummaryScreen.isViewAllProductsButtonDisplayed(), "View all products button is not displayed");
+            orderSummaryScreen.clickPlaceAnotherOrderButton();
             Thread.sleep(3000);
-            Assert.assertTrue(customerScreen.isChooseYourPlanTextDisplayed(), "Choose your plan text is not displayed");
-            customerScreen.swipeUntilDiscountTextVisible();
-            Assert.assertTrue(customerScreen.isDiscountTextDisplayed(), "Discount text is not displayed");
+            Assert.assertTrue(orderSummaryScreen.isChooseYourPlanTextDisplayed(), "Choose your plan text is not displayed");
+            Assert.assertTrue(orderSummaryScreen.isThreeMonthsPlanDisplayed(), "3 Months plan is not displayed");
+            orderSummaryScreen.clickThreeMonthsPlan();
+            orderSummaryScreen.swipeUntilDiscountTextVisible();
+            Assert.assertTrue(orderSummaryScreen.isDiscountTextDisplayed(), "Discount text is not displayed");
             customerScreen.swipeUntilInclusiveOfAllTaxesTextVisible();
             Assert.assertTrue(customerScreen.isInclusiveOfAllTaxesTextDisplayed(), "Inclusive of all taxes (bill details) text is not displayed");
             Assert.assertTrue(customerScreen.isCheckoutContinueButtonDisplayed(), "Continue button is not displayed");

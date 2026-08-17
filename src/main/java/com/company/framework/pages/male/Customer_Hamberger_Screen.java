@@ -16,6 +16,18 @@ public class Customer_Hamberger_Screen {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
+    // Opens Order_History_Screen ("Your Orders" - the All/Ongoing/Delivered/Cancelled/Others tabs
+    // + order list).
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Your Orders']")
+ //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+    private WebElement YourOrdersMenuItem;
+    public boolean isYourOrdersMenuItemDisplayed() {
+        return waitUtils.isElementDisplayed(YourOrdersMenuItem);
+    }
+    public void clickYourOrdersMenuItem() {
+        waitUtils.waitForElement(YourOrdersMenuItem).click();
+    }
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Logout']")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement LogoutButton;

@@ -35,13 +35,6 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
     String location = "JP Nagar";
     String address = "Test Building 1234";
 
-    // Branch-detection probes below (e.g. "is this the OTP screen or the new-user screen?")
-    // only need to confirm the screen has already rendered - they don't need to wait out the
-    // full 20s/45s reserved for "wait for a genuinely slow element to appear". Using the full
-    // timeout on every mutually-exclusive if/else-if meant each false branch burned its entire
-    // timeout before falling through to the next check, which is what made this test slow -
-    // not the branching logic itself. Kept short but not instant, since a screen can still take
-    // a couple of seconds to finish rendering right after the previous action.
     private static final Duration QUICK_MOBILE_TIMEOUT = Duration.ofSeconds(5);
     private static final Duration QUICK_WEB_TIMEOUT = Duration.ofSeconds(8);
 
@@ -79,8 +72,6 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            // "Skip" only shows on some logins (e.g. a one-time onboarding overlay) - an account
-            // that's already logged in many times today may not see it again.
             if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
                 loginPage.clickSkipButton();
             }

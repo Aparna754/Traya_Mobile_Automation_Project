@@ -20,7 +20,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class RazorpayCheckout_Male_Test extends BaseTest {
 
@@ -29,14 +28,11 @@ public class RazorpayCheckout_Male_Test extends BaseTest {
     String age = "25";
     String otp = "123789";
 
-    // See HairTest_Stage1_Male_Test - same reasoning: these branch-detection probes only need to
-    // confirm a screen has already rendered, not wait out the full 20s/45s reserved for "wait for
-    // a genuinely slow element to appear".
     private static final Duration QUICK_MOBILE_TIMEOUT = Duration.ofSeconds(5);
     private static final Duration QUICK_WEB_TIMEOUT = Duration.ofSeconds(8);
 
-    @Test(description = "Verify Razorpay checkout, COD order placement, and cleanup via ERP", groups = {"regression"})
-    @TestDescription("Verify the Razorpay checkout screen elements, complete a Cash on Delivery order, book a call, then cancel the order and slot booking via ERP")
+    @Test(description = "Verify Razorpay checkout for lead user, COD order placement and cleanup via CRM Application", groups = {"regression"})
+    @TestDescription("Verify the Razorpay checkout screen elements, complete a Cash on Delivery order in lead user, book a call, then cancel the order and slot booking via CRM Application")
 
     public void verifyRazorpayTrustedBusinessBadgeIsDisplayed() throws InterruptedException {
 
@@ -65,8 +61,6 @@ public class RazorpayCheckout_Male_Test extends BaseTest {
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            // "Skip" only shows on some logins (e.g. a one-time onboarding overlay) - an account
-            // that's already logged in many times today may not see it again.
             if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
                 loginPage.clickSkipButton();
             }
@@ -148,10 +142,6 @@ public class RazorpayCheckout_Male_Test extends BaseTest {
                 Assert.assertTrue(checkoutScreen.isProceedToPayButtonDisplayed(), "Proceed to pay button is not displayed");
                 checkoutScreen.clickProceedToPayButton();
                 Thread.sleep(5000);
-
-                // --- HairTest_Stage1_Male_Test.java line 162 reached here ---
-                // Razorpay's checkout sheet has now opened (it's a WebView, but its DOM is
-                // exposed through the accessibility tree, same as any native screen).
                 Assert.assertTrue(razorpay.isRazorpayTrustedBusinessTextDisplayed(), "Razorpay Trusted Business text is not displayed");
                 Assert.assertTrue(razorpay.isPaymentOptionsTextDisplayed(), "Payment Options text is not displayed");
                 Assert.assertTrue(razorpay.isAllPaymentOptionsTextDisplayed(), "All Payment Options text is not displayed");
@@ -160,17 +150,10 @@ public class RazorpayCheckout_Male_Test extends BaseTest {
                 Assert.assertTrue(razorpay.isNetbankingTextDisplayed(), "Netbanking text is not displayed");
                 Assert.assertTrue(razorpay.isContinueButtonDisplayed(), "Continue button is not displayed");
                 razorpay.clickCashOnDeliveryText();
-                // Selecting a payment method triggers an async UI update in Razorpay's WebView
-                // (e.g. expanding/confirming the COD option) - tapping Continue immediately can
-                // race that update and land on a button that hasn't registered the selection yet.
                 Thread.sleep(2000);
                 Assert.assertTrue(razorpay.isContinueButtonDisplayed(), "Continue button is not displayed after selecting Cash on Delivery");
                 razorpay.clickContinueButton();
                 Thread.sleep(5000);
-
-                // Continuing with COD completes the order immediately (no intermediate review
-                // step) and lands on Razorpay's Order Confirmed screen - verify its
-                // "Secured by [razorpay]" badge is displayed there.
                 Assert.assertTrue(razorpay.isSecuredByTextDisplayed(), "Secured by (Razorpay) text is not displayed");
                 Assert.assertTrue(thankYouScreen.isBookACallButtonDisplayed(), "Book a call button is not displayed");
                 thankYouScreen.clickBookACallButton();
