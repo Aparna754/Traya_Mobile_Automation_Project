@@ -6,7 +6,6 @@ import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
 public class Customer_Hamberger_Screen {
 
     private final WaitUtils waitUtils;
@@ -16,8 +15,6 @@ public class Customer_Hamberger_Screen {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    // Opens Order_History_Screen ("Your Orders" - the All/Ongoing/Delivered/Cancelled/Others tabs
-    // + order list).
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Your Orders']")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement YourOrdersMenuItem;
@@ -37,6 +34,7 @@ public class Customer_Hamberger_Screen {
     public void clickLogoutButton() {
         waitUtils.waitForElement(LogoutButton).click();
     }
+    
      @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Logout']")
  //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement LogoutToggle_button;

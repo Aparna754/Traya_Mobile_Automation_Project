@@ -6,7 +6,6 @@ import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
 public class Lead_You_Screen {
 
     private final WaitUtils waitUtils;

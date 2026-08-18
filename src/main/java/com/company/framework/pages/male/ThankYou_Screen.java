@@ -10,10 +10,8 @@ import com.company.framework.utils.WaitUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
 import java.time.Duration;
 import java.util.List;
-
 public class ThankYou_Screen {
 
     private final WaitUtils waitUtils;
@@ -26,7 +24,7 @@ public class ThankYou_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Order placed, thanks!']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement ThankYouText;
     public boolean isThankYouTextDisplayed() {
         return waitUtils.isElementDisplayed(ThankYouText);
@@ -35,8 +33,8 @@ public class ThankYou_Screen {
         return waitUtils.isElementDisplayed(ThankYouText, timeout);
     }
 
-     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Book A Call']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Book A Call']")
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement BookACallToggle_button;
     public boolean isBookACallToggle_buttonDisplayed() {
         return waitUtils.isElementDisplayed(BookACallToggle_button);
@@ -46,7 +44,7 @@ public class ThankYou_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Book A Call']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement BookACallButton;
     public boolean isBookACallButtonDisplayed() {
         return waitUtils.isElementDisplayed(BookACallButton);
@@ -56,14 +54,14 @@ public class ThankYou_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Call Booked']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement CallBookedText;
     public boolean isCallBookedTextDisplayed() {
         return waitUtils.isElementDisplayed(CallBookedText);
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Okay']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement OkayButton;
     public boolean isOkayButtonDisplayed() {
         return waitUtils.isElementDisplayed(OkayButton);
@@ -72,13 +70,8 @@ public class ThankYou_Screen {
         waitUtils.waitForElement(OkayButton).click();
     }
 
-    // Top-left back-navigation control - a pure SVG/icon-font glyph (empty text, resource-id
-    // "iconIcon", clickable="false" on the node itself) at the very top of the viewport, right at
-    // statBarHeight. Same situation as the recommendation card's "Add To Cart" text elsewhere in
-    // this app - the node exposes no usable click target of its own, but the pixel position it's
-    // drawn at is real and receives touch regardless, confirmed live via a genuine W3C tap.
     @AndroidFindBy(xpath = "(//*[@resource-id='iconIcon'])[1]")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement BackButton;
     public boolean isBackButtonDisplayed() {
         return waitUtils.isElementDisplayed(BackButton);

@@ -21,7 +21,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Mobile number']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_mobile_number_field") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_mobile_number_field") // TODO(iOS): replace once real app exists
     private WebElement mobileNumberField;
     public void enterMobileNumber(String mobileNumber) {
         waitUtils.waitForElement(mobileNumberField).sendKeys(mobileNumber);
@@ -34,7 +34,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Get OTP']/android.view.ViewGroup")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_get_otp_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_get_otp_button") // TODO(iOS): replace once real app exists
     private WebElement getOTPButton;
     public void clickGetOTP() {
         waitUtils.waitForElement(getOTPButton).click();
@@ -109,42 +109,42 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Male']")
-  //  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_male_radio_button") // TODO(iOS): replace once real app exists
+//  @iOSXCUITFindBy(accessibility = "PLACEHOLDER_male_radio_button") // TODO(iOS): replace once real app exists
     private WebElement maleRadioButton;
     public void selectMale() {
         waitUtils.waitForElement(maleRadioButton).click();
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Female']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_female_radio_button") // TODO(iOS): replace once real app exists
     private WebElement femaleRadioButton;
     public void selectFemale() {
         waitUtils.waitForElement(femaleRadioButton).click();
     }
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Continue']/android.view.ViewGroup")
-   // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement continueButton;
     public void clickContinue() {
         waitUtils.waitForElement(continueButton).click();
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Know The Root Cause Of Your Hair Loss']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement knowTheRootCauseOfYourHairLossText;
     public boolean isKnowTheRootCauseOfYourHairLossTextDisplayed() {
         return waitUtils.isElementDisplayed(knowTheRootCauseOfYourHairLossText);
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Traya Heroes']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement trayaHeroesText;
     public boolean isTrayaHeroesTextDisplayed() {
         return waitUtils.isElementDisplayed(trayaHeroesText);
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='What Causes Hair Loss?']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement whatCausesHairLossText;
     public void swipeUntilWhatCausesHairLossTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, whatCausesHairLossText);
@@ -154,7 +154,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How Traya Works']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement howTrayaWorksText;
     public void swipeUntilHowTrayaWorksTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, howTrayaWorksText);
@@ -164,7 +164,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Traya Plan Includes']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement trayaPlanIncludesText;
     public void swipeUntilTrayaPlanIncludesTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, trayaPlanIncludesText);
@@ -174,7 +174,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Need Help?']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement needHelpText;
     public void swipeUntilNeedHelpTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, needHelpText);
@@ -184,7 +184,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Meet Our Team Of Doctors']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement meetOurTeamOfDoctorsText;
     public void swipeUntilMeetOurTeamOfDoctorsTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, meetOurTeamOfDoctorsText);
@@ -194,7 +194,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Google Reviews & Ratings']")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement googleReviewsAndRatingsText;
     public void swipeUntilGoogleReviewsAndRatingsTextVisible() {
         SwipeUtils.swipeUntilVisible(driver, googleReviewsAndRatingsText);
@@ -204,7 +204,7 @@ public class LoginAndDraftpage {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'The Hair Test')]")
-    // @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
+// @iOSXCUITFindBy(accessibility = "PLACEHOLDER_continue_button") // TODO(iOS): replace once real app exists
     private WebElement takeTheHairTestButton;
     public void clickTakeTheHairTest() {
         waitUtils.waitForElement(takeTheHairTestButton).click();

@@ -87,6 +87,7 @@ public class HairTest_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stage 6']")
+ //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement stage6TextOption;
     public boolean isStage6TextOptionDisplayed() { 
         return waitUtils.isElementDisplayed(stage6TextOption); 

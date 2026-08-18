@@ -19,7 +19,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class Customer_OrderSummary_Test extends BaseTest {
 
@@ -44,14 +43,14 @@ public class Customer_OrderSummary_Test extends BaseTest {
         ThankYou_Screen thankYouScreen = new ThankYou_Screen(DriverManager.getDriver());
         OrderCancellation_Screen orderCancellationScreen = new OrderCancellation_Screen(DriverManager.getDriver());
 
-        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 loginPage.clickSkipButton();
             }
         }
@@ -121,11 +120,11 @@ public class Customer_OrderSummary_Test extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(razorpay.isContinueButtonDisplayed(), "Continue button is not displayed after selecting Cash on Delivery");
         razorpay.clickContinueButton();
-        if (razorpay.isCodConfirmDialogDisplayed(Duration.ofSeconds(6))) {
+        if (razorpay.isCodConfirmDialogDisplayed(Duration.ofSeconds(6))==true) {
             razorpay.clickContinueWithCODButton();
         }
         Assert.assertTrue(razorpay.isOrderConfirmedTextDisplayed(Duration.ofSeconds(20)), "Order Confirmed (payment) screen is not displayed");
-        if (thankYouScreen.isThankYouTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if (thankYouScreen.isThankYouTextDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             thankYouScreen.clickBackButton();
         } else {
             Assert.assertTrue(thankYouScreen.isBackButtonDisplayed(QUICK_MOBILE_TIMEOUT), "Neither 'Order placed, thanks!' text nor the Go Back button is displayed");
@@ -164,10 +163,10 @@ public class Customer_OrderSummary_Test extends BaseTest {
             Customer_Discription_Page customerDiscriptionPage = new Customer_Discription_Page(webDriver);
             Web_Chrome_SignIn.navigateToWelcomePage(webDriver);
 
-            if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 loginPageWeb.clickSignInWithGoogleButton();
                 Thread.sleep(2000);
-                if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)) {
+                if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                     homePage.clickOKButton();
                 }
             }
@@ -177,11 +176,11 @@ public class Customer_OrderSummary_Test extends BaseTest {
             homePage.clickSearchPageTextField();
             homePage.enterNumberInSearchPageTextField(mobileNumber);
 
-            if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 homePage.clickPeopleNumber();
             }
 
-            if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 customerDiscriptionPage.clickCanceledButton();
                 Thread.sleep(2000);
                 Assert.assertTrue(customerDiscriptionPage.isSelectARemarkDisplayed(), "Select A Remark is not displayed");

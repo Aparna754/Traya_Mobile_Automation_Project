@@ -12,7 +12,6 @@ import com.company.test.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 @Listeners(TestListener.class)
 public class HairTest_Stage6_Male_Test extends BaseTest {
 
@@ -40,7 +39,6 @@ public class HairTest_Stage6_Male_Test extends BaseTest {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();  
         }
-
         if(loginPage.isLetsGetStartedDisplayed()==true) {
             Assert.assertTrue(loginPage.isLetsGetStartedDisplayed(), "Let's get started text is not displayed");
             loginPage.enterName(name);
@@ -48,7 +46,6 @@ public class HairTest_Stage6_Male_Test extends BaseTest {
             loginPage.selectMale();
             loginPage.clickContinue();
         }
-
         else if(loginPage.isVerifyOTPTextDisplayed()==true) {
             Assert.assertTrue(loginPage.isVerifyOTPTextDisplayed(), "Verify OTP text is not displayed");
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
@@ -57,7 +54,6 @@ public class HairTest_Stage6_Male_Test extends BaseTest {
             loginPage.clickVerifyOTP();
             loginPage.clickSkipButton();
         }
-
         if(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed()==true) {
             Assert.assertTrue(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed(), "Know the root cause of your hair loss text is not displayed");
             Assert.assertTrue(leadScreen.isTrayaHeroesTextDisplayed(), "Traya heroes text is not displayed");
@@ -75,7 +71,6 @@ public class HairTest_Stage6_Male_Test extends BaseTest {
             Assert.assertTrue(leadScreen.isGoogleReviewsAndRatingsTextDisplayed(), "Google reviews and ratings text is not displayed");
             leadScreen.clickTakeTheHairTest() ;
         }
-
         if(leadScreen.isTestCompletedTodayTextDisplayed()==true) {
             Assert.assertTrue(leadScreen.isTestCompletedTodayTextDisplayed(), "Test completed today text is not displayed");
             leadScreen.swipeUntilWhoMatchesYourProfileTextVisible();
@@ -84,7 +79,6 @@ public class HairTest_Stage6_Male_Test extends BaseTest {
             Assert.assertTrue(leadScreen.isTakeHairTestAgainTextDisplayed(), "Take hair test again text is not displayed");
             leadScreen.clickTakeHairTestAgainText();
         }  
-
         if(hairTestScreen.isHairLossTextDisplayed()==true) {
             Assert.assertTrue(hairTestScreen.isHairLossTextDisplayed(), "Hair loss text is not displayed");
             Assert.assertTrue(hairTestScreen.isWhichImageBestDescribesYourHairLossTextDisplayed(), "Which image best describes your hair loss text is not displayed");

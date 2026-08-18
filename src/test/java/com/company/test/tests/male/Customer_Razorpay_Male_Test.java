@@ -38,7 +38,6 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
         OrderSummary_Screen orderSummaryScreen = new OrderSummary_Screen(DriverManager.getDriver());
         Razorpay razorpay = new Razorpay(DriverManager.getDriver());
         ThankYou_Screen thankYouScreen = new ThankYou_Screen(DriverManager.getDriver());
-
         if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();
@@ -50,8 +49,7 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
                 loginPage.clickSkipButton();
             }
         }
-
-        if (customerScreen.isTodaysChecklistTextDisplayed(DASHBOARD_LOAD_TIMEOUT)) {
+        if (customerScreen.isTodaysChecklistTextDisplayed(DASHBOARD_LOAD_TIMEOUT)==true) {
 
             Assert.assertTrue(customerScreen.isTodaysChecklistTextDisplayed(), "Today's Checklist text is not displayed");
             customerScreen.swipeUntilLogNowTextVisible();
@@ -101,7 +99,6 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
         Home_Page homePage = new Home_Page(webDriver);
         Customer_Discription_Page customerDiscriptionPage = new Customer_Discription_Page(webDriver);
         Web_Chrome_SignIn.navigateToWelcomePage(webDriver);
-
         if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)==true) {
             loginPageWeb.clickSignInWithGoogleButton();
             Thread.sleep(2000);
@@ -118,7 +115,6 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
         if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)==true) {
             homePage.clickPeopleNumber();
         }
-
         if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
             customerDiscriptionPage.clickCanceledButton();
             Thread.sleep(2000);
@@ -129,7 +125,6 @@ public class Customer_Razorpay_Male_Test extends BaseTest {
             customerDiscriptionPage.clickConfirmCancellationButton();
             Assert.assertTrue(customerDiscriptionPage.isSuccessfulMessageDisplayed(), "Automatic Order Cancellation Ticket Raise successfully Message is not displayed");
         }
-
         if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)==true) {
             customerDiscriptionPage.clickSlotBookCloseButton();
             Assert.assertTrue(customerDiscriptionPage.isOtherOptionDisplayed(), "Please Enter the Reason for Slot Cancellation Other option is not displayed");

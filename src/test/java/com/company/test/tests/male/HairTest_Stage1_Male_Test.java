@@ -55,29 +55,26 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
         Customer_Hamberger_Screen customerHambergerScreen = new Customer_Hamberger_Screen(DriverManager.getDriver());
       //  Lead_You_Screen leadYouScreen = new Lead_You_Screen(DriverManager.getDriver());
 
-        if(loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if(loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();
         }
-
-        if(loginPage.isLetsGetStartedDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if(loginPage.isLetsGetStartedDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterName(name);
             loginPage.enterAge(age);
             loginPage.selectMale();
             loginPage.clickContinue();
         }
-
-        else if(loginPage.isVerifyOTPTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        else if(loginPage.isVerifyOTPTextDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 loginPage.clickSkipButton();
             }
         }
-
-        if(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if(leadScreen.isKnowTheRootCauseOfYourHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             Assert.assertTrue(leadScreen.isTrayaHeroesTextDisplayed(), "Traya heroes text is not displayed");
             leadScreen.swipeUntilWhatCausesHairLossTextVisible();
             Assert.assertTrue(leadScreen.isWhatCausesHairLossTextDisplayed(), "What causes hair loss text is not displayed");
@@ -93,15 +90,14 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             Assert.assertTrue(leadScreen.isGoogleReviewsAndRatingsTextDisplayed(), "Google reviews and ratings text is not displayed");
             leadScreen.clickTakeTheHairTest() ;
         }
-        if(leadScreen.isTestCompletedTodayTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if(leadScreen.isTestCompletedTodayTextDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             leadScreen.swipeUntilWhoMatchesYourProfileTextVisible();
             Assert.assertTrue(leadScreen.isWhoMatchesYourProfileTextDisplayed(), "Who matches your profile text is not displayed");
             leadScreen.swipeUntilTakeHairTestAgainTextVisible();
             Assert.assertTrue(leadScreen.isTakeHairTestAgainTextDisplayed(), "Take hair test again text is not displayed");
             leadScreen.clickTakeHairTestAgainText();
         }   
-
-        if(hairTestScreen.isHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if(hairTestScreen.isHairLossTextDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             Assert.assertTrue(hairTestScreen.isWhichImageBestDescribesYourHairLossTextDisplayed(), "Which image best describes your hair loss text is not displayed");
             Assert.assertTrue(hairTestScreen.isStage1TextOptionDisplayed(), "Stage 1 text option is not displayed");
             hairTestScreen.clickStage1Option();
@@ -134,7 +130,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             hairTestScreen.clickNoneTextOption();
             Assert.assertTrue(hairTestScreen.isTakeScalpPhotoButtonDisplayed(), "Take scalp photo button is not displayed");
             hairTestScreen.clickTakeScalpPhotoButton();
-            if(hairTestScreen.isContinueButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if(hairTestScreen.isContinueButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 hairTestScreen.clickContinueButton();
             }
             Assert.assertTrue(hairTestScreen.isImageCaptureButtonDisplayed(), "Image capture button is not displayed");
@@ -150,7 +146,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             Assert.assertTrue(assessmentReportScreen.isFreeAddOnsTextDisplayed(), "Free add-ons text is not displayed");
             Assert.assertTrue(assessmentReportScreen.isBuyNowButtonDisplayed(), "Buy now button is not displayed");
             assessmentReportScreen.clickBuyNowButton();
-            if(checkoutScreen.isAlreadyPresentAddressDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if(checkoutScreen.isAlreadyPresentAddressDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 checkoutScreen.clickAlreadyPresentAddress();
                 Assert.assertTrue(checkoutScreen.isProceedToPayButtonDisplayed(), "Proceed to pay button is not displayed");
                 checkoutScreen.clickProceedToPayButton();
@@ -173,7 +169,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
                 customerHambergerScreen.clickLogoutButton();
                 Assert.assertTrue(customerHambergerScreen.isLogoutToggle_buttonDisplayed(),"Logout  Toggle Button is not displayed");
                 customerHambergerScreen.clickLogoutToggle_button();
-        }
+            }
             else {
                 Assert.assertTrue(checkoutScreen.isAddNewAddressButtonDisplayed(), "Add new address button is not displayed");
                 checkoutScreen.clickAddNewAddressButton();
@@ -224,11 +220,10 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
         Home_Page homePage  = new Home_Page(webDriver);
         Customer_Discription_Page customerDiscriptionPage = new Customer_Discription_Page(webDriver);
         Web_Chrome_SignIn.navigateToWelcomePage(webDriver);
-
-        if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)) {
+        if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)==true) {
             loginPageWeb.clickSignInWithGoogleButton();
             Thread.sleep(2000);
-            if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 homePage.clickOKButton();
             }
         }
@@ -237,12 +232,10 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
         Assert.assertTrue(homePage.isSearchPageTextFieldIsDisplayed(), "Search Page textfield is not displayed");
         homePage.clickSearchPageTextField();
         homePage.enterNumberInSearchPageTextField(mobileNumber);
-
-        if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)) {
+        if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)==true) {
             homePage.clickPeopleNumber();
         }
-
-        if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)){
+        if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)==true){
             customerDiscriptionPage.clickCanceledButton();
             Thread.sleep(2000);
             Assert.assertTrue(customerDiscriptionPage.isSelectARemarkDisplayed(), "Select A Remark is not displayed");
@@ -252,8 +245,7 @@ public class HairTest_Stage1_Male_Test extends BaseTest {
             customerDiscriptionPage.clickConfirmCancellationButton();
             Assert.assertTrue(customerDiscriptionPage.isSuccessfulMessageDisplayed(), "Automatic Order Cancellation Ticket Raise successfully Message is not displayed");
         }
-
-        if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)) {
+        if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)==true) {
             customerDiscriptionPage.clickSlotBookCloseButton();
             Assert.assertTrue(customerDiscriptionPage.isOtherOptionDisplayed(), "Please Enter the Reason for Slot Cancellation Other option is not displayed");
             customerDiscriptionPage.clickOtherOption();

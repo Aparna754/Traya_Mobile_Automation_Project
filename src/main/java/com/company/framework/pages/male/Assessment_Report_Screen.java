@@ -67,6 +67,7 @@ public class Assessment_Report_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How does it work?']")
+//   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement howDoesItWorkText;
     public boolean isHowDoesItWorkTextDisplayed() { 
         return waitUtils.isElementDisplayed(howDoesItWorkText); 
@@ -76,6 +77,7 @@ public class Assessment_Report_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Continue']")
+//   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement continueButton2;
     public boolean isContinueButtonDisplayed2() {
          return waitUtils.isElementDisplayed(continueButton2); 
@@ -85,18 +87,21 @@ public class Assessment_Report_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Book A Call']")
+ //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement bookACallText;
     public boolean isBookACallTextDisplayed() { 
         return waitUtils.isElementDisplayed(bookACallText); 
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stage - 6']")
+//   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement stage6Text;
     public boolean isStage6TextDisplayed() { 
         return waitUtils.isElementDisplayed(stage6Text); 
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='What happens at this stage?']")
+ //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement whatHappensAtThisStageText;
     public boolean isWhatHappensAtThisStageTextDisplayed() {
         return waitUtils.isElementDisplayed(whatHappensAtThisStageText);
@@ -106,12 +111,14 @@ public class Assessment_Report_Screen {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='iconIcon']")
+//   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement BookACallBackButton;
     public void clickBookACallBackButton() { 
         waitUtils.waitForElement(BookACallBackButton).click(); 
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='iconIcon']")
+ //   @iOSXCUITFindBy(accessibility = "PLACEHOLDER_name_field") // TODO(iOS): replace once real app exists
     private WebElement assessmentReportBackButton;
     public void clickassessmentReportBackButton() { 
         waitUtils.waitForElement(assessmentReportBackButton).click(); 

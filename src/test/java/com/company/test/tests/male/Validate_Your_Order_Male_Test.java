@@ -12,9 +12,7 @@ import com.company.test.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class Validate_Your_Order_Male_Test extends BaseTest {
 
@@ -34,14 +32,14 @@ public class Validate_Your_Order_Male_Test extends BaseTest {
         Order_History_Screen orderHistoryScreen = new Order_History_Screen(DriverManager.getDriver());
         Order_Details_Screen orderDetailsScreen = new Order_Details_Screen(DriverManager.getDriver());
 
-        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 loginPage.clickSkipButton();
             }
         }
