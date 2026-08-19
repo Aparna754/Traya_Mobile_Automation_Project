@@ -32,6 +32,9 @@ public class Home_Page {
     public boolean isSearchtextfieldIsDisplayed() {
         return waitUtils.isElementDisplayed(SearchPageTextfield);
     }
+    public boolean isSearchtextfieldIsDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(SearchPageTextfield, timeout);
+    }
     public void clickSearchTextfield() {
         waitUtils.waitUntilClickable(SearchPageTextfield).click();
     }
@@ -40,6 +43,9 @@ public class Home_Page {
     private WebElement SearchTextfield;
     public boolean isSearchPageTextFieldIsDisplayed() {
         return waitUtils.isElementDisplayed(SearchTextfield);
+    }
+    public boolean isSearchPageTextFieldIsDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(SearchTextfield, timeout);
     }
     public void clickSearchPageTextField() {
         waitUtils.waitUntilClickable(SearchTextfield).click();
