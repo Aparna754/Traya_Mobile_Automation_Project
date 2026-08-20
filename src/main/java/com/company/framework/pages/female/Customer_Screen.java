@@ -58,4 +58,19 @@ public class Customer_Screen {
     public void clickBuyAgainButton() {
         waitUtils.waitForElement(BuyAgainButton).click();
     }
+
+    // Order-status banner (Ordered -> Shipped -> Out for Delivery -> Delivered) shown on this
+    // dashboard for a pending order - confirmed live to carry the same text as the male flow's
+    // equivalent banner. Tapping it opens that order's Order Summary/Cancel Order screen.
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Your order is placed']")
+    private WebElement YourOrderIsPlacedText;
+    public boolean isYourOrderIsPlacedTextDisplayed() {
+        return waitUtils.isElementDisplayed(YourOrderIsPlacedText);
+    }
+    public boolean isYourOrderIsPlacedTextDisplayed(Duration timeout) {
+        return waitUtils.isElementDisplayed(YourOrderIsPlacedText, timeout);
+    }
+    public void clickYourOrderIsPlacedText() {
+        waitUtils.waitForElement(YourOrderIsPlacedText).click();
+    }
 }

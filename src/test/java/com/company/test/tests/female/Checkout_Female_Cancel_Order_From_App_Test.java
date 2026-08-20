@@ -5,6 +5,7 @@ import com.company.framework.driver.DriverManager;
 import com.company.framework.listeners.TestListener;
 import com.company.framework.pages.female.Customer_Screen;
 import com.company.framework.pages.female.LoginAndDraftpage;
+import com.company.framework.pages.female.OrderCancellation_Screen;
 import com.company.framework.pages.female.OrderSummary_Screen;
 import com.company.framework.pages.female.Payment;
 import com.company.framework.pages.female.ThankYou_Screen;
@@ -18,11 +19,10 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
-
 @Listeners(TestListener.class)
-public class Checkout_Female_Test extends BaseTest {
+public class Checkout_Female_Cancel_Order_From_App_Test extends BaseTest {
 
-    String mobileNumber = "8892257924";
+    String mobileNumber = "8892257924"; //7301591870
     String otp = "123789";
 
     private static final Duration QUICK_MOBILE_TIMEOUT = Duration.ofSeconds(5);
@@ -33,8 +33,8 @@ public class Checkout_Female_Test extends BaseTest {
     // rather than assumed ready after a Thread.sleep.
     private static final Duration PAYMENT_METHODS_LOAD_TIMEOUT = Duration.ofSeconds(20);
 
-    @Test(description = "Verify checkout screen elements for a returning female customer, complete a Cash on Delivery order, book a call, then cancel the order and slot booking via CRM Application", groups = {"regression"})
-    @TestDescription("Verify the checkout screen elements, complete a Cash on Delivery order in lead user, book a call, then cancel the order and slot booking via CRM Application")
+    @Test(description = "Verify checkout screen elements for a returning female customer, complete a Cash on Delivery order, book a call, then cancel the order from App and Verify via CRM Application", groups = {"regression"})
+    @TestDescription("Verify the checkout screen elements, complete a Cash on Delivery order in lead user, book a call, then cancel the order from App and Verify via CRM Application")
     public void verifyRazorpayCheckoutCODOrderAndCleanup() throws InterruptedException {
 
         LoginAndDraftpage loginPage = new LoginAndDraftpage(DriverManager.getDriver());
@@ -42,6 +42,7 @@ public class Checkout_Female_Test extends BaseTest {
         OrderSummary_Screen orderSummaryScreen = new OrderSummary_Screen(DriverManager.getDriver());
         Payment payment = new Payment(DriverManager.getDriver());
         ThankYou_Screen thankYouScreen = new ThankYou_Screen(DriverManager.getDriver());
+        OrderCancellation_Screen orderCancellationScreen = new OrderCancellation_Screen(DriverManager.getDriver());
 
         if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
@@ -104,6 +105,21 @@ public class Checkout_Female_Test extends BaseTest {
         }
         Assert.assertTrue(thankYouScreen.isCallBookedTextDisplayed(), "Call Booked text is not displayed");
         thankYouScreen.clickCloseCallBookedModal();
+
+        // --- Cancel the order in-app ---
+        // Confirmed live: closing the Call Booked modal already lands back on the dashboard (with
+        // the "Your order is placed" banner visible directly) - no separate back-navigation is
+        // needed here, so isYourOrderIsPlacedTextDisplayed(...) below both confirms we're back on
+        // the dashboard and waits for the banner to render.
+        Assert.assertTrue(customerScreen.isYourOrderIsPlacedTextDisplayed(DASHBOARD_LOAD_TIMEOUT), "'Your order is placed' text is not displayed");
+        customerScreen.clickYourOrderIsPlacedText();
+        Assert.assertTrue(orderCancellationScreen.isCancelOrderButtonDisplayed(), "Cancel Order button is not displayed");
+        orderCancellationScreen.clickCancelOrderButton();
+        Assert.assertTrue(orderCancellationScreen.isForgotToApplyDiscountOrCoinsReasonDisplayed(), "'Forgot to apply discount/coins' reason option is not displayed");
+        orderCancellationScreen.clickForgotToApplyDiscountOrCoinsReason();
+        Assert.assertTrue(orderCancellationScreen.isConfirmCancelOrderButtonDisplayed(), "Confirm Cancel Order button is not displayed");
+        orderCancellationScreen.clickConfirmCancelOrderButton();
+        Assert.assertTrue(orderCancellationScreen.isOrderCancelSuccessMessageDisplayed(Duration.ofSeconds(10)), "'Order Cancel Requested Successfully' message is not displayed");
 
         // --- Cancel both the order and the booked call slot via the CRM (ERP) web panel ---
         WebDriver webDriver = Web_Chrome_SignIn.createSignedInChromeDriver();
