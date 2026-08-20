@@ -20,7 +20,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class HairTest_Female_Test extends BaseTest {
 
@@ -45,14 +44,14 @@ public class HairTest_Female_Test extends BaseTest {
         Payment payment = new Payment(DriverManager.getDriver());
         ThankYou_Screen thankYouScreen = new ThankYou_Screen(DriverManager.getDriver());
 
-        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if (loginPage.isMobileNumberFieldDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             loginPage.enterMobileNumber(mobileNumber);
             loginPage.clickGetOTP();
             Assert.assertTrue(loginPage.isEnterTheOTPTextDisplayed(), "Enter the OTP text is not displayed");
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 loginPage.clickSkipButton();
             }
         }
@@ -109,7 +108,7 @@ public class HairTest_Female_Test extends BaseTest {
         Assert.assertTrue(hairTestScreen.isNextButtonDisplayed(), "'Next' button is not displayed");
         hairTestScreen.clickNextButton();
 
-        if (assessmentReportScreen.isAssessmentReportTextDisplayed(SCREEN_LOAD_TIMEOUT)) {
+        if (assessmentReportScreen.isAssessmentReportTextDisplayed(SCREEN_LOAD_TIMEOUT)==true) {
             assessmentReportScreen.swipeUntilWhoMatchesYourProfileTextVisible();
             Assert.assertTrue(assessmentReportScreen.isWhoMatchesYourProfileTextDisplayed(), "'who matches your profile' text is not displayed");
             assessmentReportScreen.swipeUntilForCompleteHairCareTextVisible();
@@ -122,23 +121,23 @@ public class HairTest_Female_Test extends BaseTest {
             assessmentReportScreen.clickBuyNowButton();
         }
 
-        if (checkoutScreen.isCheckoutTextDisplayed(SCREEN_LOAD_TIMEOUT)) {
+        if (checkoutScreen.isCheckoutTextDisplayed(SCREEN_LOAD_TIMEOUT)==true) {
             Assert.assertTrue(checkoutScreen.isProceedToPayButtonDisplayed(), "Proceed to Pay button is not displayed");
             checkoutScreen.clickProceedToPayButton();
         }
 
-        if (payment.isPaymentMethodsTextDisplayed(SCREEN_LOAD_TIMEOUT)) {
+        if (payment.isPaymentMethodsTextDisplayed(SCREEN_LOAD_TIMEOUT)==true) {
             Assert.assertTrue(payment.isCashOnDeliveryTextDisplayed(), "Cash On Delivery text is not displayed");
             payment.clickCashOnDeliveryText();
             Assert.assertTrue(payment.isProceedToPayButtonDisplayed(), "Proceed to Pay button is not displayed after selecting Cash On Delivery");
             payment.clickProceedToPayButton();
         }
 
-        if (payment.isCodConfirmDialogDisplayed(QUICK_MOBILE_TIMEOUT)) {
+        if (payment.isCodConfirmDialogDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
             payment.clickContinueWithCODButton();
         }
 
-        if (thankYouScreen.isThankYouTextDisplayed(SCREEN_LOAD_TIMEOUT)) {
+        if (thankYouScreen.isThankYouTextDisplayed(SCREEN_LOAD_TIMEOUT)==true) {
             Assert.assertTrue(thankYouScreen.isBookACallButtonDisplayed(), "Book A Call button is not displayed");
             thankYouScreen.clickBookACallButton();
             // Confirmed live: this sometimes books immediately, and sometimes instead reveals a
@@ -149,7 +148,7 @@ public class HairTest_Female_Test extends BaseTest {
             }
         }
 
-        if (thankYouScreen.isCallBookedTextDisplayed(SCREEN_LOAD_TIMEOUT)) {
+        if (thankYouScreen.isCallBookedTextDisplayed(SCREEN_LOAD_TIMEOUT)==true) {
             thankYouScreen.clickCloseCallBookedModal();
         }
 
@@ -160,25 +159,25 @@ public class HairTest_Female_Test extends BaseTest {
             Customer_Discription_Page customerDiscriptionPage = new Customer_Discription_Page(webDriver);
             Web_Chrome_SignIn.navigateToWelcomePage(webDriver);
 
-            if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (loginPageWeb.isSignInWithGoogleDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 loginPageWeb.clickSignInWithGoogleButton();
                 Thread.sleep(2000);
-                if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)) {
+                if (homePage.isOkButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                     homePage.clickOKButton();
                 }
             }
-            if (homePage.isSearchtextfieldIsDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (homePage.isSearchtextfieldIsDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 homePage.clickSearchTextfield();
             }
-            if (homePage.isSearchPageTextFieldIsDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (homePage.isSearchPageTextFieldIsDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 homePage.clickSearchPageTextField();
                 homePage.enterNumberInSearchPageTextField(mobileNumber);
             }
-            if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (homePage.isPeopleNumberDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 homePage.clickPeopleNumber();
             }
 
-            if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (customerDiscriptionPage.isCanceledButtonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 customerDiscriptionPage.clickCanceledButton();
                 Thread.sleep(2000);
                 Assert.assertTrue(customerDiscriptionPage.isSelectARemarkDisplayed(), "Select A Remark is not displayed");
@@ -189,7 +188,7 @@ public class HairTest_Female_Test extends BaseTest {
                 Assert.assertTrue(customerDiscriptionPage.isSuccessfulMessageDisplayed(), "Automatic Order Cancellation Ticket Raise successfully Message is not displayed");
             }
 
-            if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)) {
+            if (customerDiscriptionPage.isSlotBookingCloseButonDisplayed(QUICK_WEB_TIMEOUT)==true) {
                 customerDiscriptionPage.clickSlotBookCloseButton();
                 Assert.assertTrue(customerDiscriptionPage.isOtherOptionDisplayed(), "Please Enter the Reason for Slot Cancellation Other option is not displayed");
                 customerDiscriptionPage.clickOtherOption();

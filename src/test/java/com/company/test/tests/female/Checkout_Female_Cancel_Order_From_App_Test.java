@@ -35,7 +35,7 @@ public class Checkout_Female_Cancel_Order_From_App_Test extends BaseTest {
 
     @Test(description = "Verify checkout screen elements for a returning female customer, complete a Cash on Delivery order, book a call, then cancel the order from App and Verify via CRM Application", groups = {"regression"})
     @TestDescription("Verify the checkout screen elements, complete a Cash on Delivery order in Customer , book a call, then cancel the order from App and Verify via CRM Application")
-    public void verifyRazorpayCheckoutCODOrderAndCleanup() throws InterruptedException {
+    public void verifyCheckoutFemaleCancelOrderFromApp() throws InterruptedException {
 
         LoginAndDraftpage loginPage = new LoginAndDraftpage(DriverManager.getDriver());
         Customer_Screen customerScreen = new Customer_Screen(DriverManager.getDriver());

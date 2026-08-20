@@ -10,9 +10,7 @@ import com.company.test.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class Customer_OrderSummaryFemale_Test extends BaseTest {
 

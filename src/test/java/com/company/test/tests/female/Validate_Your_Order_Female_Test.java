@@ -12,9 +12,7 @@ import com.company.test.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-
 @Listeners(TestListener.class)
 public class Validate_Your_Order_Female_Test extends BaseTest {
 
@@ -41,7 +39,7 @@ public class Validate_Your_Order_Female_Test extends BaseTest {
             loginPage.enterOTP(otp);
             Thread.sleep(5000);
             loginPage.clickVerifyOTP();
-            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)) {
+            if (loginPage.isSkipButtonDisplayed(QUICK_MOBILE_TIMEOUT)==true) {
                 loginPage.clickSkipButton();
             }
         }
