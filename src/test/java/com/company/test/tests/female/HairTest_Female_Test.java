@@ -34,7 +34,7 @@ public class HairTest_Female_Test extends BaseTest {
     private static final Duration SCREEN_LOAD_TIMEOUT = Duration.ofSeconds(10);
 
     @Test(description = "Verify the female Hair Test flow end-to-end: quiz, Assessment Report, checkout, COD payment, Thank You, Book A Call, then cancel the order and the booked slot via the ERP web panel", groups = {"regression"})
-    @TestDescription("Login as a returning female customer, retake the Hair Test with a fixed answer set, verify the Assessment Report sections, buy now, checkout with the saved address, pay via Cash on Delivery, verify order confirmation, book a call, then cancel both the order and the booked call slot from the web ERP panel")
+    @TestDescription("Login as a returning female Lead, retake the Hair Test with a fixed answer set, verify the Assessment Report sections, buy now, checkout with the saved address, pay via Cash on Delivery, verify order confirmation, book a call, then cancel both the order and the booked call slot from the web ERP panel")
     public void verifyFemaleHairTestFlow() throws InterruptedException {
 
         LoginAndDraftpage loginPage = new LoginAndDraftpage(DriverManager.getDriver());
